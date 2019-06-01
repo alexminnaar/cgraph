@@ -8,6 +8,9 @@ class Input(Node):
 
 
     def compute(self,output=None):
+        """
+        Input nodes don't need to compute anything, they just hold the input values.
+        """
         pass
 
     def backpass(self):

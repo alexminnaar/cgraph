@@ -8,14 +8,23 @@ class Linear(Node):
         Node.__init__(self, [input, weights, bias])
 
     def compute(self):
+        """
+        Compute dot product plus bias
+        """
         X = self.input_nodes[0].output
         W = self.input_nodes[1].output
         b = self.input_nodes[2].output
         self.output = np.dot(X, W) + b
 
     def backpass(self):
+        """
+        Backpropagate gradients from output nodes towards input nodes.
+        """
+
+        # clear gradients of input nodes
         self.gradients = {n: np.zeros_like(n.output) for n in self.input_nodes}
 
+        # update gradients of input nodes based on gradients from output nodes
         for node in self.output_nodes:
             grad_cost = node.gradients[self]
 

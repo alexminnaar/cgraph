@@ -5,10 +5,14 @@ class Graph(object):
 
     def __init__(self, feed_dict):
         self.feed_dict = feed_dict
-        self.ordered_nodes = self.topological_sort(self.feed_dict)
+        self.ordered_nodes = self.topological_sort()
 
-    def topological_sort(self, feed_dict):
-        input_nodes = [n for n in feed_dict.keys()]
+    def topological_sort(self):
+        """
+        Topological sort all nodes in the graph
+        :return:  Topologically sorted list of nodes
+        """
+        input_nodes = [n for n in self.feed_dict.keys()]
 
         G = {}
         nodes = [n for n in input_nodes]
@@ -29,7 +33,7 @@ class Graph(object):
             n = S.pop()
 
             if isinstance(n, Input):
-                n.output = feed_dict[n]
+                n.output = self.feed_dict[n]
 
             L.append(n)
             for m in n.output_nodes:
@@ -50,4 +54,8 @@ class Graph(object):
             node.backpass()
 
     def loss(self):
+        """
+        Show final loss of graph.  Must have completed one forward pass.
+        :return: Loss of graph
+        """
         return self.ordered_nodes[-1].output

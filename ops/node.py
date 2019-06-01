@@ -1,6 +1,10 @@
 class Node(object):
 
     def __init__(self, input_nodes=[]):
+        """
+        Define the inputs to this node and create variables to hold the output, gradients, and output nodes.
+        :param input_nodes: The nodes providing input to this node
+        """
         self.input_nodes = input_nodes
         self.output_nodes = []
 
