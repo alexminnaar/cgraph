@@ -1,4 +1,4 @@
-from Node import Node
+from ops.node import Node
 
 
 class Input(Node):

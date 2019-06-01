@@ -1,4 +1,4 @@
-from Node import Node
+from ops.node import Node
 import numpy as np
 
 
@@ -11,7 +11,6 @@ class Linear(Node):
         X = self.input_nodes[0].output
         W = self.input_nodes[1].output
         b = self.input_nodes[2].output
-
         self.output = np.dot(X, W) + b
 
     def backpass(self):

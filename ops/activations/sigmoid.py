@@ -1,4 +1,4 @@
-from Node import Node
+from ops.node import Node
 import numpy as np
 
 
@@ -9,7 +9,7 @@ class Sigmoid(Node):
 
     def compute(self):
         input_value = self.input_nodes[0].output
-        self.output = 1. / (1. + np.exp(input_value))
+        self.output = 1. / (1. + np.exp(-input_value))
 
     def backpass(self):
         self.gradients = {n: np.zeros_like(n.output) for n in self.input_nodes}

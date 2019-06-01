@@ -1,10 +1,6 @@
-
-
-
 class Node(object):
 
-    def __init__(self, input_nodes = []):
-
+    def __init__(self, input_nodes=[]):
         self.input_nodes = input_nodes
         self.output_nodes = []
 
@@ -12,19 +8,10 @@ class Node(object):
             node.output_nodes.append(self)
 
         self.output = None
-
         self.gradients = {}
 
-
-    def compute(self, output = None):
-
+    def compute(self, output=None):
         raise NotImplementedError
-
 
     def backpass(self):
-
         raise NotImplementedError
-
-
-
-
